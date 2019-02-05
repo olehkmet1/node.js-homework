@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.get('/',function(req,res){
     res.sendFile(path.join(__dirname+'/interlingua/index.html'));
-    //__dirname : It will resolve to your project folder.
 });
 
 router.get('/basic-grid',function(req,res){
@@ -36,10 +35,6 @@ router.get('/sidebar-right',function(req,res){
 router.get('*',function(req,res){
     res.sendFile(path.join(__dirname+'/interlingua/layout/index.html'));
 });
-
-app.use(express.static(__dirname + '/pages'));
-
-app.use(express.static(__dirname + '/scripts'));
 
 app.use('/', router);
 
