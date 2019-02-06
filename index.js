@@ -1,8 +1,14 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const fs = require('fs');
+const bodyParser = require('body-parser');
 const router = express.Router();
+
+app.use(bodyParser.urlencoded());
+
+app.use(bodyParser.json());
+
+app.use(express.static(path.join(__dirname, 'interlingua')));
 
 router.get('/',function(req,res){
     res.sendFile(path.join(__dirname+'/interlingua/index.html'));
@@ -18,10 +24,6 @@ router.get('/full-width',function(req,res){
 
 router.get('/gallery',function(req,res){
     res.sendFile(path.join(__dirname+'/interlingua/pages/gallery.html'));
-});
-
-router.get('/gallery/:id',function(req,res){
-    res.sendFile(path.join(__dirname+'/interlingua/index.html'));
 });
 
 router.get('/sidebar-left',function(req,res){
